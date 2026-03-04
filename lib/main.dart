@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Courses App',
       //home: const LayoutBottomNavbar(),
       onGenerateRoute: AppRouter().generateRoute,
-      initialRoute: AppRoutes.homescreen,
+      initialRoute: AppRoutes.layout,
     );
   }
 }
