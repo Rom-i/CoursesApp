@@ -7,6 +7,7 @@ class CourseDetailsRepo {
   final supa =  Supabase.instance.client;
   Future<Either<String,void>> Enrollcourses(coursesId,usersId) async {
     try {
+      print('holle from new courses repooo');
     final res = supa.from('Enrollments').insert({
       'courses_id':coursesId,
       'user_id':usersId

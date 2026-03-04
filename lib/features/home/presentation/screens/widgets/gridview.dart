@@ -42,7 +42,6 @@ class CoursesGridView extends StatelessWidget {
                     Image.network(
                       course.image,
                       fit: BoxFit.contain,
-                      // يمكنك إضافة placeholder أو error widget هنا
                     ),
                     const SizedBox(height: 10),
                     Text(

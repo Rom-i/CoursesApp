@@ -1,3 +1,5 @@
+import 'package:courses_app/features/course_details/presentation/screens/course_details.dart';
+import 'package:courses_app/features/home/data/models/course_model.dart';
 import 'package:courses_app/features/home/presentation/screens/home.dart';
 import 'package:courses_app/features/layout/presentation/cubit/layoutnavbar_cubit/layout_state.dart';
 import 'package:courses_app/features/auth/presentation/screens/login_screen.dart';

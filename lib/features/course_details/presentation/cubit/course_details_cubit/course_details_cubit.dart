@@ -8,14 +8,19 @@ class CourseDetailsCubit extends Cubit<CourseDetailsState> {
 
   Future<void> EnrollCourse(courseId,userId) async {
     emit(CourseDetailsLoading());
-    try {
+    // try {
+    // final res = await courseDetailsRepo.Enrollcourses(courseId, userId);
+    // }
+    // on Exception catch(e){
+    //   emit(CourseDetailsError(e.toString()));
+    // }
+    // catch (e){
+    //   emit(CourseDetailsError(e.toString()));
+    // }
     final res = await courseDetailsRepo.Enrollcourses(courseId, userId);
-    }
-    on Exception catch(e){
-      emit(CourseDetailsError(e.toString()));
-    }
-    catch (e){
-      emit(CourseDetailsError(e.toString()));
-    }
+    res.fold((l) => emit(CourseDetailsError(l)), (r) { 
+      print('from cubit');
+      emit(CourseDetailsSuccess());
+    });
   }
 }

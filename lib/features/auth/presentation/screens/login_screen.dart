@@ -9,6 +9,7 @@ import 'package:courses_app/features/auth/presentation/cubit/auth_cubit/auth_sta
 import 'package:courses_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:courses_app/core/widgets/textwidget.dart';
 import 'package:courses_app/core/widgets/topscreenwidget.dart';
+import 'package:courses_app/features/layout/presentation/screens/layout_bottom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,84 +41,86 @@ class _LoginScreenState extends State<LoginScreen> {
           if (state is LoginSuccessState){
             Navigator.pushReplacement(context, 
             MaterialPageRoute(builder: (context){
-              return const SignupScreen();
+              return const LayoutBottomNavbar();
             }
             )
             );
           }
         },
         builder: (context, state) {
-          return Scaffold(
-          body: SingleChildScrollView(
-            child: Form(
-              key: loginformKey,
-              child: Column(
-                children: [
-                  TopScreen(text: 'Login'),
-                  Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 50,),
-                        TextWidget(text: 'Email'),
-                        SizedBox(height: 12,),
-                        CustomTextFormField(
-                          controller:emailController,
-                          validator: (value){
-                            if (!value!.contains('@')){
-                              return 'Invalid Email' ;
-                            }
-                            if (value.isEmpty){
-                              return 'Inter your email' ;
-                            }
-                            return null ;
-                          },
-                          prefixIcon: Icon(Icons.email),
-                          label: Text('Email'),
-                          keyboardType: TextInputType.emailAddress,
-                        ),
-                        SizedBox(height: 20,),
-                        TextWidget(text: 'Password'),
-                        SizedBox(height: 12,),
-                        CustomTextFormField(
-                          controller:passwordController,
-                          validator: (value){
-                            if (value!.length < 6){
-                              return 'Please enter a strong password' ;
-                            }
-                            if (value.isEmpty){
-                              return 'Inter your password' ;
-                            }
-                            return null ;
-                          },
-                          prefixIcon: Icon(Icons.lock),
-                          label: Text('Password'),
-                          obscureText: true,
-                        ),
-                        SizedBox(height: 12,),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text('Forget Password?')
+          return SafeArea(
+            child: Scaffold(
+            body: SingleChildScrollView(
+              child: Form(
+                key: loginformKey,
+                child: Column(
+                  children: [
+                    TopScreen(text: 'Login'),
+                    Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 50,),
+                          TextWidget(text: 'Email'),
+                          SizedBox(height: 12,),
+                          CustomTextFormField(
+                            controller:emailController,
+                            validator: (value){
+                              if (!value!.contains('@')){
+                                return 'Invalid Email' ;
+                              }
+                              if (value.isEmpty){
+                                return 'Inter your email' ;
+                              }
+                              return null ;
+                            },
+                            prefixIcon: Icon(Icons.email),
+                            label: Text('Email'),
+                            keyboardType: TextInputType.emailAddress,
                           ),
-                        SizedBox(height: 20,),
-                        state is LoginLoadingState ? CircularProgressIndicator() :
-                        CustomButton(text: 'Login', onPressed: (){
-                          if (loginformKey.currentState!.validate()){
-                            context.read<AuthCubit>().signin(
-                              email:emailController.text.trim(),
-                             password:passwordController.text.trim());
-                        }
-                        }
-                        )
+                          SizedBox(height: 20,),
+                          TextWidget(text: 'Password'),
+                          SizedBox(height: 12,),
+                          CustomTextFormField(
+                            controller:passwordController,
+                            validator: (value){
+                              if (value!.length < 6){
+                                return 'Please enter a strong password' ;
+                              }
+                              if (value.isEmpty){
+                                return 'Inter your password' ;
+                              }
+                              return null ;
+                            },
+                            prefixIcon: Icon(Icons.lock),
+                            label: Text('Password'),
+                            obscureText: true,
+                          ),
+                          SizedBox(height: 12,),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: Text('Forget Password?')
+                            ),
+                          SizedBox(height: 20,),
+                          state is LoginLoadingState ? Center(child: CircularProgressIndicator()) :
+                          CustomButton(text: 'Login', onPressed: (){
+                            if (loginformKey.currentState!.validate()){
+                              context.read<AuthCubit>().signin(
+                                email:emailController.text.trim(),
+                               password:passwordController.text.trim());
+                          }  
+                          }
+                          )
+                            ],
+                            ),
+                          ),
                           ],
-                          ),
-                        ),
-                        ],
-                    ),
+                      ),
+              ),
             ),
-          ),
-        );
+                    ),
+          );
         },
       ),
     );

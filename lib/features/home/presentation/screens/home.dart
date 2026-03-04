@@ -23,45 +23,47 @@ class Home extends StatelessWidget {
           
         },
         builder: (context, state) {
-          return Scaffold(
-          body: Column(
-            children: [
-              Container(
-                height: MediaQuery.sizeOf(context).height*0.25,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.vertical(bottom: Radius.circular(60))
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Welcome to Courese App',
-                      style: AppTextStyles.s18w400W
-                      ),
-                      SizedBox(height: 12,),
-                      TextformField(
-                        prefixIcon: Icon(Icons.search),
-                        text: 'What are you looking for?',
-                      ),
-                    ],
+          return SafeArea(
+            child: Scaffold(
+            body: Column(
+              children: [
+                Container(
+                  height: MediaQuery.sizeOf(context).height*0.25,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.vertical(bottom: Radius.circular(60))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Welcome to Courese App',
+                        style: AppTextStyles.s18w400W
+                        ),
+                        SizedBox(height: 12,),
+                        TextformField(
+                          prefixIcon: Icon(Icons.search),
+                          text: 'What are you looking for?',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 5,),
-
-              if(state is HomeLoadingState)
-              Center(child: CircularProgressIndicator(),),
-              if(state is HomeErrorState)
-              Text(state.errmsg),
-              if(state is HomeSuccessState)
-              state.courses.isEmpty ?Center(child: Text('Courses not found'))
-              : CoursesGridView(courses: state.courses)
-            ],
-          ),
-        );
+                SizedBox(height: 5,),
+            
+                if(state is HomeLoadingState)
+                Center(child: CircularProgressIndicator(),),
+                if(state is HomeErrorState)
+                Text(state.errmsg),
+                if(state is HomeSuccessState)
+                state.courses.isEmpty ?Center(child: Text('Courses not found'))
+                : CoursesGridView(courses: state.courses)
+              ],
+            ),
+                    ),
+          );
         }
       ),
     );
