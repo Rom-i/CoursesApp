@@ -1,21 +1,44 @@
-import 'package:courses_app/core/networking/supabase_services.dart';
-import 'package:courses_app/features/home/data/models/course_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CourseDetailsRepo {
   final supa =  Supabase.instance.client;
-  Future<Either<String,void>> Enrollcourses(coursesId,usersId) async {
+  Future<Either<String,void>> enrollcourses(coursesId,usersId) async {
     try {
-      print('holle from new courses repooo');
-    final res = supa.from('Enrollments').insert({
+      // final response = await supa.from('Enrollments').select()
+      // .eq('courses_id',coursesId)
+      // .eq('users_id',usersId)
+      // .maybeSingle();
+      // if (response != null)
+      // {
+      //   return Left('Already Enrolled');
+      // }
+      //print('hello from new courses repooo');
+    final res = await supa.from('Enrollments').insert({
       'courses_id':coursesId,
-      'user_id':usersId
+      'users_id':usersId
     });
     return Right(null);
   }
   catch(e){
     return Left(e.toString());
   }
+  }
+
+
+  Future <Either<String,bool>>checkenrollment(
+    {required String coursesId,required String usersId})
+  async{
+    try{
+      final response = await supa.from('Enrollments').select()
+      .eq('courses_id',coursesId)
+      .eq('users_id',usersId)
+      .maybeSingle();
+        return right(response!=null);
+    }
+    catch(e){
+      return Left(e.toString());
+    }
+    
   }
 }

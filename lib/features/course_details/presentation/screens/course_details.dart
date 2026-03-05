@@ -27,10 +27,10 @@ class _CourseDetailsState extends State<CourseDetails> {
       },
       child: BlocConsumer<CourseDetailsCubit,CourseDetailsState>(
         listener: (context, state) {
-          if(state is CourseDetailsError){
+          if(state is EnrollErrorState){
             snakBarMessage(context: context, text: state.errmsg);
           }
-          if(state is CourseDetailsSuccess){
+          if(state is EnrollSuccessState){
             snakBarMessage(context: context, text: 'Enrolled Successfully');
           }
         },
@@ -81,20 +81,47 @@ class _CourseDetailsState extends State<CourseDetails> {
                     style: AppTextStyles.coursedetails,
                     ),
                     SizedBox(height: 40,),
-                    state is CourseDetailsLoading?
-                    Center(child: CircularProgressIndicator(),)
-                    :
+                    
                     Center(
-                      child: SizedBox(
+                      child: 
+                      state is EnrollLoadingState?
+                      SizedBox()
+                      :
+                      SizedBox(
                             width: MediaQuery.of(context).size.width * 0.7,
                             height: 50,
-                            child: CustomButton(
-                              text: 'Enroll course', 
-                              onPressed: () {
-                                context.read<CourseDetailsCubit>().EnrollCourse(
-                                  widget.course.id,Supabase.instance.client.auth.currentUser!.id);
-                              },
-                            ),
+                            child: SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: state is EnrollLoadingState?
+                    Center(child: CircularProgressIndicator(),)
+                    :ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    ),
+                  onPressed: (){
+                    if(
+                                  state is EnrollIntialState ||
+                                  state is EnrollErrorState ||
+                                  state is NotEnrolledState
+                                ){
+                                context.read<CourseDetailsCubit>().enrollCourse(
+                                  widget.course.id,
+                                  Supabase.instance.client.auth.currentUser!.id);
+                                }
+                  },
+                 child: Text(
+                  state is EnrollSuccessState || 
+                  state is AlreadyEnrollState
+                   ?'Enrolled'
+                  :'Enroll course' ,
+                  style: AppTextStyles.mains20bold,
+                 ),
+                 ),
+              )
                           ),
                     ),
                   ],

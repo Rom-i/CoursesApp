@@ -1,11 +1,12 @@
 abstract class CourseDetailsState {}
 
-class CourseDetailsInitial extends CourseDetailsState{}
-class CourseDetailsLoading extends CourseDetailsState{}
-class CourseDetailsSuccess extends CourseDetailsState{
-  
-}
-class CourseDetailsError extends CourseDetailsState{
+class EnrollIntialState extends CourseDetailsState{}
+class EnrollLoadingState extends CourseDetailsState{}
+class EnrollSuccessState extends CourseDetailsState{}
+class EnrollErrorState extends CourseDetailsState{
   final String errmsg;
-  CourseDetailsError(this.errmsg);
+  EnrollErrorState(this.errmsg);
 }
+class AlreadyEnrollState extends CourseDetailsState{}
+class NotEnrolledState extends CourseDetailsState{}
+

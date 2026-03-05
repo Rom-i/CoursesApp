@@ -1,11 +1,14 @@
+import 'package:courses_app/core/bloc_observer.dart';
 import 'package:courses_app/core/networking/supabase_services.dart';
 import 'package:courses_app/core/routing/app_router.dart';
 import 'package:courses_app/core/routing/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await SupabaseServices.init();
+  Bloc.observer = SimpleBloc();
   runApp(const MyApp());
 }
 
