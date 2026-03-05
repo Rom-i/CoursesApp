@@ -5,5 +5,7 @@ class AppRoutes{
   static const String layout = '/layout';
   static const String homescreen = '/home';
   static const String coursedetails = '/coursedetails';
+  static const String mycourses = '/mycourses';
+
 
 }

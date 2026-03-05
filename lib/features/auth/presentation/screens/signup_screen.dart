@@ -147,7 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 onTap: () {
                                   Navigator.push(context,
                                   MaterialPageRoute(builder: (context){
-                                    return const LoginScreen();
+                                    return const LayoutBottomNavbar();
                                   }
                                   )
                                   );

@@ -6,6 +6,7 @@ import 'package:courses_app/features/course_details/presentation/screens/course_
 import 'package:courses_app/features/home/data/models/course_model.dart';
 import 'package:courses_app/features/home/presentation/screens/home.dart';
 import 'package:courses_app/features/layout/presentation/screens/layout_bottom_navbar.dart';
+import 'package:courses_app/features/my_courses/presentation/screens/my_courses_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -36,6 +37,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => CourseDetails(
             course: course,
+          ),
+        );
+
+        case AppRoutes.mycourses:
+        return MaterialPageRoute(
+          builder: (_) => MyCoursesScreen(
           ),
         );
 
