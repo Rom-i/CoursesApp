@@ -3,7 +3,7 @@ import 'package:courses_app/core/theme/text_style.dart';
 import 'package:courses_app/features/courses_videos/data/repo/courses_videos_repo.dart';
 import 'package:courses_app/features/courses_videos/presentation/cubit/courses_videos_cubit/courses_videos_cubit.dart';
 import 'package:courses_app/features/courses_videos/presentation/cubit/courses_videos_cubit/courses_videos_state.dart';
-import 'package:courses_app/features/video_viewer/presentation/screen/video_screen.dart';
+import 'package:courses_app/features/videoooo/presentation/screen/videooopage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -69,7 +69,7 @@ class CoursesVideos extends StatelessWidget {
                         Navigator.push(context, 
                         MaterialPageRoute(
                           builder: (context){
-                            return VideoScreen(coursesVideosModel: state.videos[index]);
+                            return ContentPage(courseId: state.videos[index].id.toString());
                           }
                         )
                         );

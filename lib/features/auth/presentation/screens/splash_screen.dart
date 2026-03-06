@@ -44,8 +44,11 @@ class SplashScreen extends StatelessWidget {
                 style: AppTextStyles.mains30bold,
                 ),
               ),
-              Text('Empowering your learing journey with courses',
-              style: AppTextStyles.mains20bold
+              Center(
+                child: Text(' Empowering your learing journey with courses',
+                maxLines: 2,
+                style: AppTextStyles.mains20bold
+                ),
               ),
             ],
           ),

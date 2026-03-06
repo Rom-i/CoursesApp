@@ -9,7 +9,6 @@ import 'package:courses_app/features/auth/presentation/cubit/auth_cubit/auth_sta
 import 'package:courses_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:courses_app/core/widgets/textwidget.dart';
 import 'package:courses_app/core/widgets/topscreenwidget.dart';
-import 'package:courses_app/features/layout/presentation/screens/layout_bottom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -118,7 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             obscureText: true,
                           ),
                           SizedBox(height: 30,),
-                          state is SignupLoadingState ? CircularProgressIndicator() :
+                          state is SignupLoadingState ? Center(child: CircularProgressIndicator()) :
                           CustomButton(text: 'SignUp', onPressed: (){
                             if (signupformKey.currentState!.validate()){
                                     context.read<AuthCubit>().signup(

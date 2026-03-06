@@ -9,8 +9,8 @@ class AppRoutes{
   static const String coursesvideos = '/coursesvideos';
   static const String videoscreen = '/videoscreen';
   static const String profile = '/profile';
-
-
+  static const String videoooo='/videoooo';
+  static const String content = '/content';
 
 
 }

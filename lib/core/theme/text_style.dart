@@ -14,7 +14,7 @@ class AppTextStyles{
 
   static const TextStyle mains20bold = TextStyle(
     color: AppColors.textColor,
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: FontWeight.bold,
   );
 

@@ -1,12 +1,9 @@
-//import 'package:courses_app/core/constants/app_colors.dart';
-//import 'package:courses_app/core/theme/text_style.dart';
 import 'package:courses_app/core/functions.dart';
 import 'package:courses_app/core/widgets/custom_button.dart';
 import 'package:courses_app/core/widgets/custom_text_form_feild.dart';
 import 'package:courses_app/features/auth/data/repo/auth_repo/auth_repo.dart';
 import 'package:courses_app/features/auth/presentation/cubit/auth_cubit/auth_cubit.dart';
 import 'package:courses_app/features/auth/presentation/cubit/auth_cubit/auth_state.dart';
-import 'package:courses_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:courses_app/core/widgets/textwidget.dart';
 import 'package:courses_app/core/widgets/topscreenwidget.dart';
 import 'package:courses_app/features/layout/presentation/screens/layout_bottom_navbar.dart';

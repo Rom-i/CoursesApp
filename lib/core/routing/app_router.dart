@@ -10,7 +10,8 @@ import 'package:courses_app/features/home/presentation/screens/home.dart';
 import 'package:courses_app/features/layout/presentation/screens/layout_bottom_navbar.dart';
 import 'package:courses_app/features/my_courses/presentation/screens/my_courses_screen.dart';
 import 'package:courses_app/features/profile/presentation/screen/profile_screen.dart';
-import 'package:courses_app/features/video_viewer/presentation/screen/video_screen.dart';
+import 'package:courses_app/features/videoooo/presentation/screen/videooopage.dart';
+import 'package:courses_app/features/videoooo/presentation/screen/widget/videoooview.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -57,20 +58,34 @@ class AppRouter {
             coursesId: courseId,
           ),
         );
-
-
-        case AppRoutes.videoscreen:
-        final  videoId = settings.arguments.toString();
-        return MaterialPageRoute(builder: (_)=>
-         VideoScreen(
-          coursesVideosModel:settings.arguments as CoursesVideosModel,
-         )
-        );
-        
+        // case AppRoutes.videoscreen:
+        // final  videoId = settings.arguments.toString();
+        // return MaterialPageRoute(builder: (_)=>
+        //  VideoScreen(
+        //   coursesVideosModel:settings.arguments as CoursesVideosModel,
+        //  )
+        // );
+        // في الـ routes
         case AppRoutes.profile:
         return MaterialPageRoute(builder: (_)=>
         ProfileScreen()
         );
+
+        //
+        case AppRoutes.videoooo:
+        final url = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => VideoViwer(videoUrl: url));
+
+        
+      case AppRoutes.content:
+        final courseId = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => ContentPage(courseId: courseId),
+        );
+
+
+
+        //
 
 
       default:

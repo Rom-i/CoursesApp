@@ -1,7 +1,6 @@
 import 'package:courses_app/core/constants/app_colors.dart';
 import 'package:courses_app/core/functions.dart';
 import 'package:courses_app/core/theme/text_style.dart';
-import 'package:courses_app/core/widgets/custom_button.dart';
 import 'package:courses_app/features/course_details/data/repo/course_details_repo.dart';
 import 'package:courses_app/features/course_details/presentation/cubit/course_details_cubit/course_details_cubit.dart';
 import 'package:courses_app/features/course_details/presentation/cubit/course_details_cubit/course_details_state.dart';

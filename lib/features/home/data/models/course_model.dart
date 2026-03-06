@@ -3,7 +3,7 @@ class CourseModel {
   final String title;
   final String desc;
   final String image;
-  final double price;
+  final int price;
 
   CourseModel({
     required this.id,
@@ -15,7 +15,7 @@ class CourseModel {
 
   factory CourseModel.fromJson(Map<String, dynamic> map) {
     return CourseModel(
-      id: map['id'].toString() ,
+      id: map['id'],
       title: map['title'],
       desc: map['desc'] ,
       image: map['image'] ,
