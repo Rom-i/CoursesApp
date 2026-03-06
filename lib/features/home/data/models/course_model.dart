@@ -4,34 +4,33 @@ class CourseModel {
   final String desc;
   final String image;
   final double price;
-  final String? category;
 
   CourseModel({
     required this.id,
     required this.title,
     required this.desc,
     required this.image,
-    required this.price, this.category,
+    required this.price,
   });
 
-  factory CourseModel.fromJson(Map<String, dynamic> data) {
+  factory CourseModel.fromJson(Map<String, dynamic> map) {
     return CourseModel(
-      id: data['id'] as String,
-      title: data['title'] as String,
-      desc: data['desc'] as String,
-      image: data['image'] as String,
-      price: (data['price'] as num).toDouble(),
+      id: map['id'].toString() ,
+      title: map['title'],
+      desc: map['desc'] ,
+      image: map['image'] ,
+      price: map['price'],
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'title': title,
-      'descr': desc,
-      'image': image,
-      'price': price,
-    };
-  }
+  // Map<String, dynamic> toJson() {
+  //   return {
+  //     'id': id,
+  //     'title': title,
+  //     'descr': desc,
+  //     'image': image,
+  //     'price': price,
+  //   };
+  // }
 
 }

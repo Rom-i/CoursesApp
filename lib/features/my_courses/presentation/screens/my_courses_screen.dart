@@ -1,5 +1,7 @@
 import 'package:courses_app/core/constants/app_colors.dart';
+import 'package:courses_app/core/routing/routes.dart';
 import 'package:courses_app/core/theme/text_style.dart';
+import 'package:courses_app/features/courses_videos/presentation/screens/courses_videos.dart';
 import 'package:courses_app/features/my_courses/data/repo/my_courses_repo.dart';
 import 'package:courses_app/features/my_courses/presentation/cubit/my_courses_cubit/my_courses_cubit.dart';
 import 'package:courses_app/features/my_courses/presentation/cubit/my_courses_cubit/my_courses_state.dart';
@@ -85,7 +87,11 @@ class MyCoursesScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                   ),
-                                  onPressed: (){}, 
+                                  onPressed: (){
+                                    print('course id: ${state.courses[index].id}');
+                                    Navigator.pushNamed(context, AppRoutes.coursesvideos,
+                                    arguments: state.courses[index].id.toString());
+                                  }, 
                                   child: Text('Completed course',
                                   style: AppTextStyles.s18w400W,
                                   ),

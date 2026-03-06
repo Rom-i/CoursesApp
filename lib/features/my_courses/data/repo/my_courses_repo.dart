@@ -13,6 +13,7 @@ class MyCoursesRepo {
     .eq('users_id', usersId);
     List<CourseModel> courses = [];
     for (var course in res){
+      print('raw course data: $course');
       courses.add(CourseModel.fromJson(course['courses']));
     }
     return Right(courses);

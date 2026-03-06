@@ -3,10 +3,14 @@ import 'package:courses_app/features/auth/presentation/screens/login_screen.dart
 import 'package:courses_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:courses_app/features/auth/presentation/screens/splash_screen.dart';
 import 'package:courses_app/features/course_details/presentation/screens/course_details.dart';
+import 'package:courses_app/features/courses_videos/data/models/courses_videos_model.dart';
+import 'package:courses_app/features/courses_videos/presentation/screens/courses_videos.dart';
 import 'package:courses_app/features/home/data/models/course_model.dart';
 import 'package:courses_app/features/home/presentation/screens/home.dart';
 import 'package:courses_app/features/layout/presentation/screens/layout_bottom_navbar.dart';
 import 'package:courses_app/features/my_courses/presentation/screens/my_courses_screen.dart';
+import 'package:courses_app/features/profile/presentation/screen/profile_screen.dart';
+import 'package:courses_app/features/video_viewer/presentation/screen/video_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -45,6 +49,29 @@ class AppRouter {
           builder: (_) => MyCoursesScreen(
           ),
         );
+
+        case AppRoutes.coursesvideos:
+        final  courseId = settings.arguments.toString();
+        return MaterialPageRoute(
+          builder: (_) => CoursesVideos(
+            coursesId: courseId,
+          ),
+        );
+
+
+        case AppRoutes.videoscreen:
+        final  videoId = settings.arguments.toString();
+        return MaterialPageRoute(builder: (_)=>
+         VideoScreen(
+          coursesVideosModel:settings.arguments as CoursesVideosModel,
+         )
+        );
+        
+        case AppRoutes.profile:
+        return MaterialPageRoute(builder: (_)=>
+        ProfileScreen()
+        );
+
 
       default:
         return MaterialPageRoute(

@@ -6,6 +6,11 @@ class AppRoutes{
   static const String homescreen = '/home';
   static const String coursedetails = '/coursedetails';
   static const String mycourses = '/mycourses';
+  static const String coursesvideos = '/coursesvideos';
+  static const String videoscreen = '/videoscreen';
+  static const String profile = '/profile';
+
+
 
 
 }

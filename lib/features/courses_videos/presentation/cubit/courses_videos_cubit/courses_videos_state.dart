@@ -1,9 +1,19 @@
-abstract class MyCoursesState {}
+import 'package:courses_app/features/courses_videos/data/models/courses_videos_model.dart';
 
-final class MyCoursesInitialState extends MyCoursesState{}
+abstract class CoursesVideosState {}
 
-final class MyCoursesLoadingState extends MyCoursesState{}
+final class CoursesVideosInitialState extends CoursesVideosState{}
 
-final class MyCoursesSuccessState extends MyCoursesState{}
+final class CoursesVideosLoadingState extends CoursesVideosState{}
 
-final class MyCoursesErrorState extends MyCoursesState{}
+final class CoursesVideosSuccessState extends CoursesVideosState{
+  final List<CoursesVideosModel> videos;
+  CoursesVideosSuccessState(this.videos);
+
+}
+
+final class CoursesVideosErrorState extends CoursesVideosState{
+  final String errmsg;
+  CoursesVideosErrorState(this.errmsg);
+
+}
