@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// lesson_card
 class VideoCard extends StatelessWidget {
   final String title;
   final String subtitle;
