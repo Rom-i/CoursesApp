@@ -1,3 +1,5 @@
+import 'package:courses_app/core/constants/app_colors.dart';
+import 'package:courses_app/core/theme/text_style.dart';
 import 'package:flutter/material.dart';
 
 // profile_card.dart
@@ -13,11 +15,11 @@ class ProfileCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.purple.withOpacity(0.08),
+            color: Colors.blue.withOpacity(0.08),
             blurRadius: 20,
             offset: const Offset(0, 6),
           ),
@@ -28,26 +30,22 @@ class ProfileCard extends StatelessWidget {
         children: [
           Text(
             'Name',
-            style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+            style: TextStyle(fontSize: 12, color: Colors.grey),
           ),
           const SizedBox(height: 4),
           Text(
             name,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+            style: AppTextStyles.s18w600,
           ),
           const SizedBox(height: 16),
           Text(
             'Email',
-            style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+            style: TextStyle(fontSize: 12, color: Colors.grey),
           ),
           const SizedBox(height: 4),
           Text(
             email,
-            style: const TextStyle(fontSize: 16, color: Colors.black87),
+            style: const TextStyle(fontSize: 16, color: AppColors.black),
           ),
         ],
       ),

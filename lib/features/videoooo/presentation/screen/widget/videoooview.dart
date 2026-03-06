@@ -1,4 +1,5 @@
 import 'package:chewie/chewie.dart';
+import 'package:courses_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -32,10 +33,10 @@ class _VideoViwerState extends State<VideoViwer> {
       looping: true,
       showControls: true,
       materialProgressColors: ChewieProgressColors(
-        playedColor: Colors.red,
-        handleColor: Colors.green,
-        backgroundColor: Colors.grey,
-        bufferedColor: Colors.lightBlueAccent,
+        playedColor: AppColors.primaryColor,
+        handleColor: AppColors.secondaryColor,
+        backgroundColor: AppColors.white,
+        bufferedColor: AppColors.light,
       ),
     );
     setState(() => _isInitialized = true);
@@ -61,7 +62,7 @@ class _VideoViwerState extends State<VideoViwer> {
       body: Center(
         child: _isInitialized
             ? AspectRatio(
-                aspectRatio: 16 / 9,
+                aspectRatio: 1.77,
                 child: Chewie(controller: _chewieController),
               )
             : const CircularProgressIndicator(),
